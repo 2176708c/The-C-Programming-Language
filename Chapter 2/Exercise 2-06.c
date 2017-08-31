@@ -4,7 +4,7 @@ unsigned setbits(unsigned x, int p, int n, unsigned y);
 
 int main()
 {
-    printf("%u\n", setbits(170, 5, 3, 15)); /* binary for 170: 10101010*, binary for 15: 00001111*/
+    printf("%u\n", setbits(170, 5, 3, 15)); /* binary for 170: 10101010, binary for 15: 00001111*/
     return 0;
 }
 
