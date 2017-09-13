@@ -2,38 +2,40 @@
 
 #define MAXLINE 1000 /* maximum input line length */
 
-void itob(int n, char s[], int b);
+void itoa(int n, char s[], int w);
 void reverse(char s[]);
 
 int main()
 {
-    int number, b;     /* to test the program */
+    int number, w;     /* to test the program */
     char s[MAXLINE];
     
     number = -2093;
-    b = 16;
+    w = 10;
     
-    itob(number, s, b);
-    printf("The integer %d, is converted to string: %s. \n", number, s);
-    printf("%s in base %d \n", s, b);
-
+    itoa(number, s, w);
+    printf("The integer %d, is converted to string: \n", number);
+    printf("%s with minimum field width %d. \n", s, w);
     return 0;
 }
 
-void itob(int n, char s[], int b)
+void itoa(int n, char s[], int w)
 {
-    int i, sign, r;
+    int i, sign;
     
     if ((sign = n) < 0);   /* record sign */
         n = -n;
     
     i = 0;
     do {        /* generate digits in reverse order */
-        r = n % b;
-        s[i++] = (r > 9 ? (r + 'A' - 10) : (r + '0'));  /* get next digit */
-    } while (n /= b);    /* delete it */
+        s[i++] = n % 10 +'0';  /* get next digit */
+    } while ((n /= 10) > 0);    /* delete it */
     if (sign < 0)
         s[i++] = '-';
+    
+    while (i < w)
+        s[i++] = ' ';
+
     s[i] = '\0';
     reverse(s);
 }
