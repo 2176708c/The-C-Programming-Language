@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+
 #define MAXLINE 100 /* maximum input line length */
 
 int getline(char line[], int max);
@@ -68,8 +69,3 @@ double atof(char s[])
     
         return sign * (val / power) * epower;
 }
-
-
-
-
-
