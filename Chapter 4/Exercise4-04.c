@@ -8,6 +8,7 @@
 int getop(char []);
 void push(double);
 double pop(void);
+double peak(void);
 void clear(void);
 
 /* reverse Polish calculator */
@@ -47,9 +48,7 @@ int main()
                 printf("error: zero divisor\n");
             break;
         case 'p':
-            op2 = pop();
-            printf("\t%.8g\n", op2);
-            push(op2);
+            printf("\t%.8g\n", peak());
             break;
         case 'd':
             op2 = pop();
@@ -95,6 +94,16 @@ double pop(void)
 {
     if (sp > 0)
         return val[--sp];
+    else {
+        printf("error: stack empty\n");
+        return 0.0;
+    }
+}
+
+ouble peak(void)
+{
+    if (sp > 0)
+        return val[sp];
     else {
         printf("error: stack empty\n");
         return 0.0;
